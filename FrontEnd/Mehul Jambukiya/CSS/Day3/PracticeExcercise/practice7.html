@@ -1,0 +1,93 @@
+<!-- 7.Flexbox image gallery -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexboxImgGallary</title>
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+
+        .flex-container{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+
+        }
+        .items{
+            flex: 100%;
+            max-width: 100%;
+            padding: 0 4px;
+        }
+        .items img{
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+         @media(min-width : 480px){
+            .items{
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media(min-width : 720px){
+            .items{
+                flex: 33%;
+                max-width: 33%;
+            }
+        }
+
+        @media(min-width:900px){
+            .items{
+                flex: 25%;
+                max-width: 25%;
+            }
+        } 
+    </style>
+</head>
+<body>
+
+    <div class="flex-container">
+        <div class="items">
+            <img src="../../../Assets/images/falls2.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/mountainskies.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/nature.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/paris.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/rocks.jpg" alt="" style="width: 100%;">
+        </div>
+        <div class="items">
+            <img src="../../../Assets/images/falls2.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/mountainskies.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/nature.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/paris.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/rocks.jpg" alt="" style="width: 100%;">
+        </div>
+        <div class="items">
+            <img src="../../../Assets/images/falls2.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/mountainskies.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/nature.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/paris.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/rocks.jpg" alt="" style="width: 100%;">
+        </div>
+        <div class="items">
+            <img src="../../../Assets/images/falls2.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/mountainskies.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/nature.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/paris.jpg" alt="" style="width: 100%;">
+            <img src="../../../Assets/images/rocks.jpg" alt="" style="width: 100%;">
+        </div>
+
+        
+    </div>
+    
+</body>
+</html>
