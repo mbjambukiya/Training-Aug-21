@@ -1,0 +1,106 @@
+<!-- Change Font size with Media Queries -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excercise2</title>
+    <style>
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                background: red;
+            }
+            #para{
+                font-size: 16px;
+            }
+            #head1{
+                font-size: 22px;
+            }
+            #head2{
+                font-size: 20px;
+            }
+        }
+        
+        @media only screen and (min-width: 600px) {
+            .container {
+                background: green;
+            }
+            #para{
+                font-size: 18px;
+            }
+            #head1{
+                font-size: 26px;
+            }
+            #head2{
+                font-size: 22px;
+            }
+        }
+        
+        @media only screen and (min-width: 768px) {
+            .container {
+                background: blue;
+            }
+            #para{
+                font-size: 20px;
+            }
+            #head1{
+                font-size: 30px;
+            }
+            #head2{
+                font-size: 24px;
+            }
+        } 
+        
+        @media only screen and (min-width: 992px) {
+            .container {
+                background: orange;
+            }
+            #para{
+                font-size: 22px;
+            }
+            #head1{
+                font-size: 34px;
+            }
+            #head2{
+                font-size: 26px;
+            }
+        } 
+        
+        @media only screen and (min-width: 1200px) {
+            .container {
+                background: pink;
+            }
+            #para{
+                font-size: 24px;
+            }
+            #head1{
+                font-size: 38px;
+            }
+            #head2{
+                font-size: 28px;
+            }
+        }
+
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="head1">
+            Hello World1
+        </h1>
+        <h1 id="head2">
+            Hello World2
+        </h1>
+        <p id="para">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor dolore veniam illo non
+        ipsa aperiam harum commodi. Voluptates, debitis consectetur! Incidunt sequi id harum 
+        quasi exercitationem, quas ullam obcaecati odit voluptates unde accusantium, eius 
+        deserunt sapiente dolorem est dolores temporibus, quaerat recusandae error mollitia 
+        non amet! Aliquid labore consequatur in.
+        </p>
+    </div>
+    
+</body>
+</html>
