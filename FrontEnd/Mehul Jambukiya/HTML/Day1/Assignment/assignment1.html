@@ -1,0 +1,54 @@
+<!-- Design a form for storing employee details. (Employee name, age, Gender, designation, 
+    salary, location, Email ID, Date of Joining and contact number)
+Validation required
+    Age should be a number
+    Each field should contain value
+    Email ID should be in proper format
+    Date of joining should be in date format
+    Location should be in the drop down list
+    Use radio buttons for Gender -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <h2>Employee Registration</h2>
+    <hr>
+    <form method="GET" action="">
+        <label>Employee Name:</label>
+        <input type="text" name="employeename" value="John" required autofocus><br><br>
+        <label>Age:</label>
+        <input type="number" name="age" min="18" max="60" value="25" required><br><br>
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="male" checked>
+        <label>Male</label>
+        <input type="radio" name="gender" value="female">
+        <label>Female</label>
+        <input type="radio" name="gender" value="other">
+        <label>Other</label><br><br>
+        <label>Designation:</label>
+        <input type="text" name="designation" value="Sr.Developer" required><br><br>
+        <label>Salary:</label>
+        <input type="number" name="salary" value="50000" min="8000" max="500000" required><br><br>
+        <label>Location:</label>
+        <select name="location">
+            <option value="Ahmedabad" selected>Ahmedabad</option>
+            <option value="Ahmedabad">Gandhinagar</option>
+            <option value="Ahmedabad">Surat</option>
+            <option value="Ahmedabad">Baroda</option>
+        </select><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" value="john@gmail.com" required><br><br>
+        <label>Date of Join:</label>
+        <input type="date" name="joiningdate" value="01-01-2018" required><br><br>
+        <label>Contact No:</label>
+        <input type="tel" name="mobile" value="7777777777" required><br><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
