@@ -1,0 +1,215 @@
+<!-- Create personalized resume, which must be attractive. 
+Use all the HTML tags and apply CSS which we have learned so far.
+ Add one short video of your project done into resume. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+                        
+        body{
+            background: rgba(245,255,250,0.3);
+        }
+
+        #articlediv{
+            border: 1px solid black;
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding : 25px 25px 25px 25px;
+            overflow: auto;
+            background-color: white ;
+        }
+
+        header,section{
+            margin-left: 10px;
+            overflow: auto;
+        }
+
+        footer{
+            float: right;
+            font-size: small;
+            font-style: italic;
+            overflow: auto;
+            margin-right: 10px;
+        }
+
+        h1,h4{
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        #profilephoto{
+            float: right;
+            margin-right: 10px;
+            width: 105px;
+            height: 115px;
+            border: 0.2px solid black;
+            opacity: 98%;
+        }
+
+        th,td{
+            border: 0.5px solid black;
+            text-align: center;
+            vertical-align: center;
+            word-wrap: break-word;
+        }
+
+        table{
+            margin-left: 15px;
+            border-collapse:collapse;
+        }
+
+        #edudtl{
+            width: 75%;
+        }
+
+        #techskill{
+            width: 60%;
+        }
+
+        #perdtl{
+            width: 50%;
+        }
+
+        #vdo{
+            width: 75%;
+            height: 35%;
+            margin-left: 60px;
+            border: 0.2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <article>
+    <div id="articlediv">
+        <header>
+            <div>
+                <img id="profilephoto" src="../../../Assets/images/profilephoto.JPG" alt="ProfilePhoto">
+                <h2>Mehul Jambukiya</h2>
+                <h4>Email : mbjambukiya1305@gmail.com</h4>
+                <h4>Contact No. : 9173931957</h4>
+            </div>
+        </header>
+        <hr>
+        <section>
+            <div>
+                <h4>Educational Qualification:</h4>
+                <table id="edudtl">
+                    <tr>
+                        <th>Qualification</th>
+                        <th>College/School</th>
+                        <th>University/Board</th>
+                        <th>Passing Year</th>
+                        <th>Percentage/CGPA</th>
+                    </tr>
+                    <tr>
+                        <td>B.E.(Computer Engg.)</td>
+                        <td>Government Engineering College,Bhavnagar</td>
+                        <td>G.T.U.</td>
+                        <td>2021</td>
+                        <td>8.15(CGPA)</td>
+                    </tr>
+                    <tr>
+                        <td>H.S.C.</td>
+                        <td>Maruti Science Academy,Rajkot</td>
+                        <td>GHSEB</td>
+                        <td>2017</td>
+                        <td>74%</td>
+                    </tr>
+                    <tr>
+                        <td>S.S.C</td>
+                        <td>Smt C.S. Gadani High School,Ranpur</td>
+                        <td>GSEB</td>
+                        <td>2015</td>
+                        <td>84%</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h4>Technical Skills:</h4>
+                <table id="techskill">
+                    <tr>
+                        <th>Programming Language/Technology</th>
+                        <td>C programming,HTML,CSS</td>
+                    </tr>
+                    <tr>
+                        <th>IDE</th>
+                        <td>Visual Studio Code</td>
+                    </tr>
+                    <tr>
+                        <th>Framework</th>
+                        <td>Django,Bootstrap</td>
+                    </tr>
+                    <tr>
+                        <th>Database</th>
+                        <td>MS Sql server</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h4>Project:</h4>
+                <ul>
+                    <li><strong>TechnoVate</strong></li>
+                    <blockquote>
+                        <p>
+                            &emsp; This is web application designed to manage Technical fests at college level.
+                            It includes details of events,online registration and payment for event participation,
+                            list of winners,certificate etc.
+                        </p>
+                        <video id="vdo" src="../../../Assets/video/coding.mp4" controls poster="../../../Assets/images/demo.jpg"></video>
+                    </blockquote>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h4>Area of Interest:</h4>
+                <ul>
+                    <li>Web-Development</li>
+                    <li>Software Development</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h4>Personal Details</h4>
+                <table id="perdtl">
+        
+                    <tr>
+                        <th>Full Name</th>
+                        <td>Jambukiya Mehul b.</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>Ranpur-382245</td>
+                    </tr>
+                    <tr>
+                        <th>Languages known</th>
+                        <td>Gujarati.Hindi,English</td>
+                    </tr>
+                    <tr>
+                        <th>Hobbies</th>
+                        <td>Music,Playing Keyboard</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <hr>
+        <footer>
+            <div>
+                Created on : <time datetime="2021-09-16 10:00">Septembet 16,2021 10:00 AM</time>
+            </div>
+        </footer>
+    </div>
+    </article>
+</body>
+</html>

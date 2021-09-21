@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong" rel="stylesheet">
+    <title>Practice</title>
+    <style>
+        /* #txt1{
+            font-family: "Sofia",serif;
+        }
+        #txt2{
+            font-family: "Audiowide",serif;
+        }
+        #txt3{
+            font-family: "Trirong",serif;
+        } */
+
+        #heading{
+            color: blue;
+        }
+
+        .formatting{
+            color: red;
+        }
+
+        /* #seldiv  :first-child {
+            background-color: chartreuse;
+        } */
+
+        /* #seldiv :nth-child(odd){
+            background-color:darkgray;
+        }
+        #seldiv :nth-child(even){
+            background-color:cornflowerblue;
+        } */
+
+
+        *{
+            color: green;
+        }
+
+        p{
+            color: magenta;
+        }
+
+        body{
+            background-color: seashell; 
+            /*background-image: url('../Assignment/demo.jpg');
+            background-repeat: no-repeat;
+            background-position: left top;
+            background-attachment: scroll;
+            background-attachment: fixed;
+            background-repeat: repeat-x; 
+            background-repeat: repeat-y;  */
+            /* background:aquamarine url('../Assignment/demo.jpg') no-repeat fixed left top ; */
+
+        }
+
+        #head1{
+            background: rgba(75, 225, 75, 0.5);
+        }
+
+        li{
+            display: inline;
+            width: 100px;
+            height: 100px;
+            background-color:cyan;
+            border: 1px solid black;
+        }
+        a{
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color:cyan;
+            border: 1px solid black;
+        }
+        span{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color:cyan;
+            border: 1px solid black;
+        }
+        #txt{
+            color: blue;
+            background: aquamarine;
+            text-align: center;
+            /* text-align: left; */
+            /* text-align: right; */
+            /* direction: rtl;
+            unicode-bidi: bidi-override; */
+            /* text-decoration: none;
+            text-decoration: line-through;
+            text-decoration: overline; 
+            text-decoration: underline; */
+            /* text-transform: uppercase; */
+            text-shadow: 2px 2px 2px black;
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: bolder;
+            font-variant: small-caps;
+            font-size: 50px;
+
+        }
+
+        #txt1{
+            font: italic small-caps bold 48px/25px 'Times New Roman';
+        }
+
+        #txt4{
+            text-align: justify;
+            text-indent: 50px;
+            /* letter-spacing: 5px;
+            letter-spacing: -5px; */
+            /* line-height: 2;
+            word-spacing: 5px;
+            white-space: nowrap; */
+
+        }
+
+        #b1{
+            border: 1px solid black;
+        }
+        #b2{
+            border: 1px dotted black;
+        }
+        #b3{
+            border: 1px dashed black;
+        }
+        #b4{
+            border: double black;
+        }
+        #b5{
+            border: groove gray;
+        }
+        #b6{
+            border: ridge gray;
+        }
+        #b7{
+            border: inset gray;
+        }
+        #b8{
+            border: outset gray;
+        }
+        #b9{
+            border: none black;
+        }
+        #b10{
+            border: hidden black;
+        }
+        #b11{
+            border:  dotted dashed solid double black ;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    
+<!--HTML5 Media Tags -->
+
+<video width="500px" height="300px" controls>
+    <source src="../../../Assets/video/coding.mp4" type="video/mp4">
+</video>
+
+<br>
+
+<audio controls>
+    <source src="../../../Assets/audio/audio.mp3" type="audio/mp3">
+</audio>
+
+<!-- CSS Selectors -->
+    <div id="seldiv">
+        <h1 id="heading">H1 Heading</h1>
+        <h1>H1 Heading</h1>
+        <h1>H1 Heading</h1>
+        <h2>H2 Heading</h2>
+        <h3 class="formatting">H3 Heading</h3>
+        <h4>H4 Heading</h4>
+
+        <p class="formatting">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, hic?</p>   
+
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, maxime neque.</p>
+
+        <p>Lorem ipsum dolor sit amet.</p>
+
+    </div>
+    <!-- Background Properties -->
+
+
+    <h1 id="head1">Backgroung Practice</h1>
+
+    <p id="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+     
+    <!-- Border Properties -->
+
+    <h3 id="b1">Solid Border</h3>
+    <h3 id="b2">Dotted Border</h3>
+    <h3 id="b3">Dashed Border</h3>
+    <h3 id="b4">Double Border</h3>
+    <h3 id="b5">Groove Border</h3>
+    <h3 id="b6">Ridge Border</h3>
+    <h3 id="b7">Inset Border</h3>
+    <h3 id="b8">Outset Border</h3>
+    <h3 id="b9">None Border</h3>
+    <h3 id="b10">Hidden Border</h3>
+    <h3 id="b11">Mixed Border</h3>
+
+
+    <!-- Text -->
+
+    <h2 id="txt">Text Practice</h2>
+    <h3 id="txt1">Text Practice1</h3>
+    <h3 id="txt2">Text Practice2</h3>
+    <h3 id="txt3">Text Practice3</h3>
+
+    
+    <p id="txt4">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione enim aliquam voluptatibus 
+        corporis nostrum commodi minus alias nemo officia eos consequatur aliquid adipisci, quibusdam error,
+         in laborum earum accusamus quisquam tempore quae cupiditate itaque. Laborum exercitationem autem 
+         mollitia excepturi. Accusamus aliquam pariatur voluptate facilis, expedita sapiente magni minima 
+         recusandae sed id earum numquam cum iure! Reprehenderit laudantium officia tenetur temporibus 
+         delectus at cumque, a, odio quaerat culpa molestias illum ea perferendis corrupti nulla asperiores
+          ex dignissimos numquam aliquam consequatur quibusdam natus? Nisi magnam veritatis distinctio nam, 
+          incidunt a. Dolores facilis ab amet facere temporibus at aspernatur magnam molestiae corrupti 
+          consequatur? ipsum dolor sit amet consectetur adipisicing elit. 
+        In ipsa quo molestiae, sit impedit non delectus veritatis? Tenetur ab molestiae temporibus.
+         Ipsa nulla velit tempore. ipsum dolor sit amet consectetur adipisicing elit. Sit, quae? 
+        Aspernatur quidem excepturi repudiandae iusto debitis iure corrupti ratione neque!
+    </p>
+
+
+    <!-- Display Properties(inline, block, inline-block) -->
+    
+    <ul>
+        <li>abc</li>
+        <li>def</li>
+        <li>ghi</li>
+        <li>jkl</li>
+    </ul>
+
+
+    <a href=#>link1</a>
+    <a href=#>link2</a>
+    <a href=#>link3</a>
+    <a href=#>link4</a>
+
+    <span>this is span1</span>
+    <span>this is span2</span>
+
+
+</body>
+</html>
