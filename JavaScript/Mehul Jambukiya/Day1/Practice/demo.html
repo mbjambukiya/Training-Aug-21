@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var x=5;
+        var y=7;
+        var z=x+y;
+        console.log(z);
+
+        var p=5,q="hello";
+        console.log(p,q)
+
+        var r;
+        console.log(r)
+
+        var r="hello"+29
+        console.log(r)
+
+        x=[11,22,33,44,55]
+        console.log(x)
+
+        var person = {fname:"abc",lname:"def",age:25}
+        console.log(person)
+
+        console.log(typeof(person))
+        console.log(typeof(x))
+        console.log(typeof(y))
+
+        function add(a,b){
+            return a+b;
+        }
+
+        var x=add(5,6)
+        console.log(x)
+
+        var age=20;
+
+        if(age>18){
+            console.log("Eligible for vote")
+        }
+        else{
+            console.log("Not eligible for vote")
+        }
+
+         var p=2;
+         switch(p){
+            case 1:
+                 console.log("one");
+                 break;
+            case 2:
+                 console.log("two");
+                 break;
+            case 3:
+                 console.log("three");
+                 break;
+            default:
+                console.log("Invalid input");
+                break;    
+         }
+
+        for(var i=0;i<5;i++){
+            console.log(i)
+        }
+
+        var person = {fname:"abc",lname:"def",age:25}
+
+        for(var x in person){
+            console.log(x+":"+person[x])
+        }
+
+        var a=[11,22,33,44,55]
+
+        for(var x of a){
+            console.log(x)
+        }
+
+        var i=10;
+
+        while(i<10){
+            console.log(i);
+            i++;
+        }
+
+        do{
+            console.log(i);
+            i++;
+        }while(i<10)
+
+        var a = ["abc",55,47,"def"]
+        console.log(a)
+
+        var a1 = new Array("aa","bb","cc",11,22)
+        console.log(a1)
+        console.log(a1[0])
+        a1[0]="aaa"
+        console.log(a1[0])
+        console.log(a1.length)
+
+
+        function myfun() {
+            var person = { id: 1, fname: "john", lname: "steve", age: 24 };
+            var myjson = JSON.stringify(person);
+            location.href = "demo2.html?x=" + myjson;
+        }
+
+        var myHead = document.getElementById("head1")
+        myHead.innerHTML = "Hello"+"(modified)"
+
+        var num = prompt("Enter a number");
+        alert("You have entered:"+num);
+
+    </script>
+</head>
+
+<body>
+
+    <h1 id="head1">Hello</h1>
+    <h1>Everyone</h1>
+
+    <button type="button" onclick="myfun()">Go</button>
+
+
+</body>
+
+
+
+</html>
