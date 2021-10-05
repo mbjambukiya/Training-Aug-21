@@ -1,0 +1,198 @@
+<!-- University of Mumbai needs to set an online exam for their students. 
+    For that they need to set a timer for three hours. After 3 hours exams should be finished.
+    Note: Use promises and callbacks -->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Exam</title>
+</head>
+
+<body>
+    <h3 class="text-center mt-2">Exam</h3>
+
+    <div class="container w-25">
+
+        <div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary btn-sm my-2"
+                    onclick="startexam(startexambtn,finishexambtn,myForm,timer)" id="startexambtn">Start
+                    Exam</button>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <span id="timer"></span>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <form action="" id="myForm" style="display: none">
+                    <label for="" class="form-label">Question 1</label>
+                    <div class="form-check">
+                        <input type="radio" name="q1" id="q1a" value="1" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerA</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q1" id="q1b" value="2" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerB</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q1" id="q1c" value="3" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerC</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q1" id="q1d" value="4" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerD</label>
+                    </div>
+
+                    <label for="" class="form-label">Question 2</label>
+                    <div class="form-check">
+                        <input type="radio" name="q2" id="q2a" value="1" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerA</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q2" id="q2b" value="2" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerB</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q2" id="q2c" value="3" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerC</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q2" id="q2d" value="4" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerD</label>
+                    </div>
+
+                    <label for="" class="form-label">Question 3</label>
+                    <div class="form-check">
+                        <input type="radio" name="q3" id="q3a" value="1" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerA</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q3" id="q3b" value="2" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerB</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q3" id="q3c" value="3" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerC</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="q3" id="q3d" value="4" class="form-check-input">
+                        <label for="" class="form-check-label">AnswerD</label>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary btn-sm my-2" onclick="endexam()" id="finishexambtn"
+                    style="display: none">Finish
+                    Exam</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        var x;
+
+        function startexam(start, end, examform, timer) {
+            name = prompt("Enter your name!")
+            if (name == "") {
+                alert("Please enter your name!")
+                name = prompt("Enter your name!")
+            }
+            else {
+                start.style.display = "none";
+                examform.style.display = "block";
+                end.style.display = "block";
+
+                var hr = 2;
+                var minute = 59;
+                var seconds = 60;
+
+                timerinterval = setInterval(() => {
+                    if (hr >= 0) {
+
+                        seconds -= 1;
+                        if (seconds == 0) {
+                            seconds = 60;
+                            minute -= 1;
+                        }
+                        if (minute == 0) {
+                            minute = 59;
+                            hr -= 1;
+                        }
+                        timer.innerHTML = "Remaining time : " + hr + ":" + minute + ":" + seconds;
+                    }
+                    else {
+                        clearInterval(timerinterval);
+                    }
+
+                }, 1000);
+                x = setTimeout(submitexam, 10000, 1);
+            }
+        }
+
+        function endexam() {
+            var res = confirm("Sure?")
+            if (res) {
+                clearTimeout(x);
+                submitexam(1);
+            }
+        }
+
+        function submitexam(flagvar) {
+            confirmsubmit(flagvar).then(
+                (success) => {
+                    alert(success);
+                },
+                (error) => {
+                    alert(error);
+                }
+            )
+        }
+
+        function confirmsubmit(flagvar) {
+            let p = new Promise((resolve, reject) => {
+                let resolveMessage = "Exam submitted successfully!";
+                let rejectMessage = "Something went wrong!";
+                if (parseInt(flagvar) == 1) {
+                    resolve(resolveMessage);
+                }
+                else {
+                    reject(rejectMessage);
+                }
+            })
+            return p;
+        }
+
+
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+           -->
+</body>
+
+</html>
