@@ -31,51 +31,33 @@
 <body>
 
     <div class="container w-50" id="maindiv">
+        
         <h3 class="text-center mt-2">Excercise3</h3>
 
         <label for="technology" class="form-label">Please select your technology :</label>
         <br>
 
-        <input type="radio" name="technology" id="php" value="PHP" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="php" class="form-check-label">PHP</label>
+    <div id="demodiv"></div>
 
-        <input type="radio" name="technology" id="aspdotnet" value="ASPDOTNET" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="aspdotnet" class="form-check-label">ASP.NET</label>
-
-        <input type="radio" name="technology" id="asp" value="ASP" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="asp" class="form-check-label">ASP</label>
-
-        <input type="radio" name="technology" id="jsp" value="JSP" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="jsp" class="form-check-label">JSP</label>
-
-        <input type="radio" name="technology" id="perl" value="PERL" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="perl" class="form-check-label">PERL</label>
-
-        <input type="radio" name="technology" id="coldfusion" value="ColdFusion" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="coldfusion" class="form-check-label">Cold Fusion</label>
-
-        <input type="radio" name="technology" id="other" value="Other" class="form-check-input">
-        <span class="bg bg-light"></span>
-        <label for="other" class="form-check-label">Other</label>
-
-    </div>
+</div>
 
 
     <script>
+        var tech = ["PHP", "ASP.NET", "ASP", "JSP", "PERL", "ColdFusion", "Other"]
 
         $(function () {
 
-            $("input").click(function(){
-                    $("input:checked + span").html("<strong>You have selected : </strong>")
-                    $("input:not(:checked) + span").text("")
+            for (i of tech) {
+                $("#demodiv").append($("<input type='radio'>").val(i).attr({ "id": i.toLowerCase(), "name": "technology", "class": "form-check-input" }));
+                $("#demodiv").append($("<span></span>").attr("class", "bg-light"));
+                $("#demodiv").append($("<label>").text(i).attr({ "for": i.toLowerCase(), "class": "form-check-label" }));
+            }
+
+            $("input").click(function () {
+                $("input:checked + span").html("<strong>You have selected : </strong>").attr("style","color:blue")
+                $("input:not(:checked) + span").text("")
             })
-            
+
         })
 
     </script>
