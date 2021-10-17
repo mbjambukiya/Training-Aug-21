@@ -1,0 +1,189 @@
+<form action="" id="fregisterform">
+  <div class="container-fluid border bg-light">
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fname" class="form-label">Name</label>
+        <input type="text" class="form-control" id="fname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="femail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="femail" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fmobile" class="form-label">Mobile</label>
+        <input type="tel" class="form-control" id="fmobile" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="feduqul" class="form-label">Educational Qualification:</label>
+        <button type="button" class="btn btn-outline-dark btn-sm ms-2" id="pluseq">+</button>
+        <button type="button" class="btn btn-outline-dark btn-sm ms-2" id="minuseq">-</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+
+        <div class="mb-3" id="eqdiv">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fexp" class="form-label">Experience</label>
+        <input type="text" class="form-control" id="fexp">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fbirthdate" class="form-label">Birth Date</label>
+        <input type="date" class="form-control" id="fbirthdate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fcity" class="form-label">City</label>
+        <input type="text" class="form-control" id="fcity" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fstate" class="form-label">State</label>
+        <input type="text" class="form-control" id="fstate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fcountry" class="form-label">Country</label>
+        <input type="text" class="form-control" id="fcountry" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fzip" class="form-label">Zip Code</label>
+        <input type="text" class="form-control" id="fzip" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fpassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="fpassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="fcpassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="fcpassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <span>Already Registered?</span>
+        <a href="" data-bs-target="#facultylmodal" data-bs-toggle="modal"
+          onclick="$('#facultyrmodal').modal('hide')">Login</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script>
+  var count = 0
+
+  $("#pluseq").click(function () {
+    count += 1
+    $("#eqdiv").append(
+      $("<label></label>").text("Education Detail " + count).attr({ "id": "l" + count, "class": "form-label mb-2" }),
+      $("<input></input>").attr({ "type": "text", "id": "eqd" + count, "class": "form-control mb-2" }),
+      $("<input></input>").attr({ "type": "file", "id": "eqf" + count, "class": "form-control mb-2", "accept": ".pdf" }),
+    )
+  })
+  $("#minuseq").click(function () {
+    $("#l" + count).remove()
+    $("#eqd" + count).remove()
+    $("#eqf" + count).remove()
+    count -= 1
+  })
+
+  $("#fregisterform").submit(function () {
+
+    var d = new Date()
+    if (d.getFullYear() - $("#fbirthdate").val().split("-")[0] < 18) {
+      alert("Minimum age should be 18 years!")
+    }
+    if ($("#fpassword").val() != $("#fcpassword").val()) {
+      alert("Please enter same password in both password fields!")
+    }
+    else {
+      var arr = new Array()
+      for (i = 1; i <= count; i++) {
+        var eqd = $("#eqd" + i).val()
+        var eqf = $("#eqf" + i).val()
+        arr.push({ "eqdetail": eqd, "eqfile": eqf })
+      }
+
+      var facultyid = localStorage.getItem("facultyid")
+
+      if (facultyid) {
+        localStorage.setItem("facultyid", parseInt(facultyid) + 1)
+      }
+      else {
+        facultyid = 0;
+        localStorage.setItem("facultyid", parseInt(facultyid) + 1)
+      }
+
+      var facultydata = {
+        "id": parseInt(facultyid) + 1,
+        "name": $("#fname").val(),
+        "email": $("#femail").val(),
+        "mobile": $("#fmobile").val(),
+        "eduqalification": arr,
+        "experience": $("#fexp").val(),
+        "bday": $("#fbirthdate").val(),
+        "city": $("#fcity").val(),
+        "state": $("#fstate").val(),
+        "country": $("#fcountry").val(),
+        "zip": $("#fzip").val(),
+        "password": $("#fpassword").val()
+      }
+
+      if (localStorage.getItem("facultydata")) {
+        var x = JSON.parse(localStorage.getItem("facultydata"))
+        x.push(facultydata)
+        try {
+          localStorage.setItem("facultydata", JSON.stringify(x))
+          alert("Registered successfully!!")
+          window.location.href = ""
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = ""
+        }
+      }
+      else {
+        try {
+          localStorage.setItem("facultydata", JSON.stringify([facultydata]))
+          alert("Registered successfully!!")
+          window.location.href = ""
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = ""
+        }
+      }
+
+    }
+
+  })
+</script>

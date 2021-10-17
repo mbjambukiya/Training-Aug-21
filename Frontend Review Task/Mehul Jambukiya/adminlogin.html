@@ -1,0 +1,64 @@
+<form action="" id="adminloginform">
+  <div class="container-fluid border bg-light">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="adminname" class="form-label">Username(Email)</label>
+        <input type="text" class="form-control" id="adminname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="adminpassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="adminpassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark">Login</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script>
+  $("#adminloginform").submit(function () {
+    var username = $("#adminname").val()
+    var password = $("#adminpassword").val()
+    var status;
+
+    $.getJSON("Assets/admin.json", function (data) {
+
+      for (i of data) {
+
+        if (username == i.username && password == i.password) {
+          status = true;
+          break
+        }
+        else {
+          status = false
+        }
+      }
+
+      if (status) {
+        var adminlogin = JSON.stringify({ "username": username, "password": password })
+        try {
+          sessionStorage.setItem("adminlogin", adminlogin)
+          alert("Logged in successfully!!!")
+          window.location.href = "admin.html"
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = "index.html"
+        }
+      }
+      else {
+        alert("Username or Password is wrong!!!")
+        window.location.href = "index.html"
+      }
+
+    })
+
+
+  })
+</script>
