@@ -1,0 +1,152 @@
+<form action="" id="addcourse">
+  <div class="container-fluid border bg-light">
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="ccategory" class="form-label">Category</label>
+        <select name="category" id="ccategory" class="form-select">
+          <option value="">Please Select Category</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="ccoursename" class="form-label">Course</label>
+        <select name="course" id="ccoursename" class="form-select">
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="cfaculty" class="form-label">Faculty</label>
+        <select name="faculty" id="cfaculty" class="form-select">
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="csyllabus" class="form-label">Syllabus</label>
+        <input type="file" accept=".pdf" class="form-control" id="csyllabus" required>
+        <span class="text-muted mx-2 my-1">upload pdf file only.</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="cduration" class="form-label">Course Duration(in hrs)</label>
+        <input type="number" class="form-control" id="cduration" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="cvalidity" class="form-label">Course Validity(in months)</label>
+        <input type="number" class="form-control" id="cvalidity" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="cfees" class="form-label">Fees(INR)</label>
+        <input type="number" class="form-control" id="cfees" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="certificate" class="form-label">With Certificate?: </label>
+
+        <input type="radio" name="certificatestatus" id="ccertificateyes" value="yes" checked>
+        <label for="ccertificateyes" class="form-label">Yes</label>
+
+        <input type="radio" name="certificatestatus" id="ccertificateno" value="no">
+        <label for="ccertificateno" class="form-label">No</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <button type="submit" class="btn btn-outline-dark" value="submit">Confirm</button>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<script>
+
+  $(function () {
+
+    var category = JSON.parse(localStorage.getItem("coursecategory"))
+    for (i of category) {
+      $("#ccategory").append($("<option></option>").text(i.category).val(i.category))
+    }
+
+    $("#ccategory").change(function () {
+      $("#ccoursename").empty()
+      var recruitment = JSON.parse(localStorage.getItem("recruitment"))
+      var category = $("#ccategory").val()
+      for (i of recruitment) {
+        if (i.category == category) {
+          $("#ccoursename").append($("<option></option>").text(i.course).val(i.course))
+        }
+      }
+    })
+
+    var faculty = JSON.parse(localStorage.getItem("facultydata"))
+    for (i of faculty) {
+      $("#cfaculty").append($("<option></option>").text(i.name).val(i.name))
+    }
+
+  })
+
+
+  $("#addcourse").submit(function () {
+
+    var recruitment = JSON.parse(localStorage.getItem("recruitment"))
+
+    var courseid = localStorage.getItem("courseid")
+
+    if (courseid) {
+      localStorage.setItem("courseid", parseInt(courseid) + 1)
+    }
+    else {
+      courseid = 0;
+      localStorage.setItem("courseid", parseInt(courseid) + 1)
+    }
+
+
+    var course = {
+      "id": parseInt(courseid) + 1,
+      "coursename": $("#ccoursename").val(),
+      "category": $("#ccategory").val(),
+      "faculty": $("#cfaculty").val(),
+      "syllabus": $("#csyllabus").val(),
+      "duration": $("#cduration").val(),
+      "validity": $("#cvalidity").val(),
+      "fees": $("#cfees").val(),
+      "certificate": $("input[name='certificatestatus']").val()
+    }
+
+    if (localStorage.getItem("course")) {
+      var x = JSON.parse(localStorage.getItem("course"))
+      x.push(course)
+      try {
+        localStorage.setItem("course", JSON.stringify(x))
+        alert("Record updated successfully!!")
+        window.location.href = ""
+      }
+      catch (e) {
+        alert("Something went wrong,please try again!!")
+        window.location.href = ""
+      }
+    }
+    else {
+      try {
+        localStorage.setItem("course", JSON.stringify([course]))
+        alert("Record updated successfully!!")
+        window.location.href = ""
+      }
+      catch (e) {
+        alert("Something went wrong,please try again!!")
+        window.location.href = ""
+      }
+    }
+  })
+
+</script>

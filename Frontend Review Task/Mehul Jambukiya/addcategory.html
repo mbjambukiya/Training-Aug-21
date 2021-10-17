@@ -1,0 +1,71 @@
+<form action="" id="addcategoryform">
+  <div class="container-fluid border bg-light">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="categoryname" class="form-label">Category Name</label>
+        <input type="text" class="form-control" id="categoryname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="interviewername" class="form-label">Interviewer Name</label>
+        <input type="text" class="form-control" id="interviewername" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark" value="submit">Confirm</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+
+  $("#addcategoryform").submit(function () {
+
+    var coursecategoryid = localStorage.getItem("coursecategoryid")
+
+    if (coursecategoryid) {
+      localStorage.setItem("coursecategoryid", parseInt(coursecategoryid) + 1)
+    }
+    else {
+      coursecategoryid = 0;
+      localStorage.setItem("coursecategoryid", parseInt(coursecategoryid) + 1)
+    }
+
+    var coursecategory = {
+      "id": parseInt(coursecategoryid) + 1,
+      "category": $("#categoryname").val(),
+      "interviewer": $("#interviewername").val()
+    }
+
+    if (localStorage.getItem("coursecategory")) {
+
+      var x = JSON.parse(localStorage.getItem("coursecategory"))
+      x.push(coursecategory)
+      try {
+        localStorage.setItem("coursecategory", JSON.stringify(x))
+        alert("Record updated successfully!!")
+        window.location.href = ""
+      }
+      catch (e) {
+        alert("Something went wrong,please try again!!")
+        window.location.href = ""
+      }
+    }
+    else {
+      try {
+        localStorage.setItem("coursecategory", JSON.stringify([coursecategory]))
+        alert("Record updated successfully!!")
+        window.location.href = ""
+      }
+      catch (e) {
+        alert("Something went wrong,please try again!!")
+        window.location.href = ""
+      }
+    }
+
+  })
+
+</script>

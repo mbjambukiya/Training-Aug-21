@@ -1,0 +1,69 @@
+<form action="" id="stdloginform">
+  <div class="container-fluid border bg-light">
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="slname" class="form-label">Username(Email)</label>
+        <input type="text" class="form-control" id="slname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="slpassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="slpassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark">Login</button>
+      </div>
+    </div>
+
+
+    <div class="text-center mb-3">
+      <a href="#" data-bs-target="#forgotpasswordmodal" data-bs-toggle="modal"
+        onclick="$('#studentlmodal').modal('hide')">Forgot Password?</a>
+      <span>|</span>
+      <span>New User?</span>
+      <a href="sregister.html" data-bs-target="#studentrmodal" data-bs-toggle="modal"
+        onclick="$('#studentlmodal').modal('hide')">Register</a>
+    </div>
+  </div>
+</form>
+
+
+<script>
+  $("#stdloginform").submit(function () {
+
+    var username = $("#slname").val()
+    var password = $("#slpassword").val()
+
+    regstdata = JSON.parse(localStorage.getItem("registeredstudent"))
+    var status
+    for (i of regstdata) {
+      if (username == i.email && password == i.password) {
+        status = true;
+        break
+      }
+      else {
+        status = false
+      }
+    }
+    if (status) {
+      var stdlogin = JSON.stringify({ "username": username, "password": password })
+      try {
+        sessionStorage.setItem("stdlogin", stdlogin)
+        alert("Logged in successfully!!!")
+        window.location.href = "index.html"
+      }
+      catch (e) {
+        alert("Something went wrong,please try again!!")
+        window.location.href = "index.html"
+      }
+    }
+    else {
+      alert("Username or Password is wrong!!!")
+      window.location.href = "index.html"
+    }
+  })
+</script>

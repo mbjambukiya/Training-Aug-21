@@ -1,0 +1,40 @@
+#categoryul{
+    padding: 0;
+    width: 225px;
+}
+
+#categoryul a{
+    display: block;
+    padding: 12px 16px;
+    background-color: ghostwhite;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+#categoryul a:hover{
+    background-color:lightblue;
+}
+#logintype option{
+    max-width: 150px;
+    background-color: lightblue;
+    text-align: center;
+}
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+footer{
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+
+@media (max-width:768px) {
+    #aboutus img{
+        width: 250px;
+    }
+}

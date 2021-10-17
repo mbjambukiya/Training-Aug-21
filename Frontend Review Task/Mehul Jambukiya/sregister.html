@@ -1,0 +1,141 @@
+<form action="" id="sregisterform">
+  <div class="container-fluid border bg-light">
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="sname" class="form-label">Name</label>
+        <input type="text" class="form-control" id="sname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="semail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="semail" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="smobile" class="form-label">Mobile</label>
+        <input type="tel" class="form-control" id="smobile" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="sbirthdate" class="form-label">Birth Date</label>
+        <input type="date" class="form-control" id="sbirthdate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="scity" class="form-label">City</label>
+        <input type="text" class="form-control" id="scity" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="sstate" class="form-label">State</label>
+        <input type="text" class="form-control" id="sstate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="scountry" class="form-label">Country</label>
+        <input type="text" class="form-control" id="scountry" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="szip" class="form-label">Zip Code</label>
+        <input type="text" class="form-control" id="szip" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="spassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="spassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="scpassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="scpassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <span>Already Registered?</span>
+        <a href="" data-bs-target="#studentlmodal" data-bs-toggle="modal"
+          onclick="$('#studentrmodal').modal('hide')">Login</a>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<script>
+  $("#sregisterform").submit(function () {
+    var d = new Date()
+    if (d.getFullYear() - $("#fbirthdate").val().split("-")[0] < 18) {
+      alert("Minimum age should be 18 years!")
+    }
+    if ($("#fpassword").val() != $("#fcpassword").val()) {
+      alert("Please enter same password in both password fields!")
+    }
+    else {
+
+      var studentid = localStorage.getItem("studentid")
+
+      if (studentid) {
+        localStorage.setItem("studentid", parseInt(studentid) + 1)
+      }
+      else {
+        studentid = 0;
+        localStorage.setItem("studentid", parseInt(studentid) + 1)
+      }
+
+
+      var stdata = {
+        "id": parseInt(studentid) + 1,
+        "name": $("#sname").val(),
+        "email": $("#semail").val(),
+        "mobile": $("#smobile").val(),
+        "bday": $("#sbirthdate").val(),
+        "city": $("#scity").val(),
+        "state": $("#sstate").val(),
+        "country": $("#scountry").val(),
+        "zip": $("#szip").val(),
+        "password": $("#spassword").val()
+      }
+
+      if (localStorage.getItem("registeredstudent")) {
+        var x = JSON.parse(localStorage.getItem("registeredstudent"))
+        x.push(stdata)
+        try {
+          localStorage.setItem("registeredstudent", JSON.stringify(x))
+          alert("Registered successfully!!")
+          window.location.href = ""
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = ""
+        }
+      }
+      else {
+        try {
+          localStorage.setItem("registeredstudent", JSON.stringify([stdata]))
+          alert("Registered successfully!!")
+          window.location.href = ""
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = ""
+        }
+      }
+    }
+  })
+</script>

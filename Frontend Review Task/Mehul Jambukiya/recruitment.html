@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Recruitment-GetSkilled</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="JS/index.js"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">GetSkilled</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 125px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" id="categoryul">
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#aboutus" class="nav-link">About/Contact Us</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-target="#demomodal"
+                            data-bs-toggle="modal">Login/Register</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="recmaindiv">
+
+    </div>
+
+    <footer class="border text-center bg-dark text-light">
+        <span class="align-middle">@2021 Copyrights - GetSkilled</span>
+    </footer>
+
+    <!-- login/register modals -->
+
+    <div class="modal" id="demomodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Select login type</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+
+                        <select class="form-select" aria-label="" id="logintype">
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-outline-dark"
+                            onclick="gotologin(logintype.value)">Go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="studentrmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Student Registration</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="studentlmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Student Login</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="facultyrmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Faculty Registration</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="facultylmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Faculty Login</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="adminlmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Admin Login</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="forgotpasswordmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Forgot Password?</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var recruitment = JSON.parse(localStorage.getItem("recruitment"))
+        var fname = JSON.parse(sessionStorage.getItem("faclogin")).username
+
+        var arr1 = new Array()
+        for (i of recruitment) {
+            if (!arr1.includes(i.category)) {
+                arr1.push(i.category)
+            }
+        }
+        for (i of arr1) {
+            $("<h2></h2>").text(i).attr("class", "my-3 p-3 bg-light").appendTo($("#recmaindiv"))
+
+            var row = $("<div></div>").attr("class", "row g-3 my-3 text-center")
+
+            for (j of recruitment) {
+
+                var col = $("<div></div>").attr("class", "col-lg-3 col-md-4 col-sm-12")
+
+                if (j.category == i) {
+                    var x = $("<div></div>").attr("class", "card").append(
+                        $("<div></div>").attr("class", "card-body").append(
+                            $("<h5></h5>").text(j.course),
+                            $("<a></a>").text("Syllabus").attr("href", j.syllabus),
+                            $("<br>"),
+                            $("<a></a>").text("Apply").attr({ "class": "btn btn-outline-primary btn-sm my-2", "id": j.course }).click(function () {
+
+                                var facultyapplied = { "name": fname, "course": this.id }
+
+                                if (localStorage.getItem("facultyapplied")) {
+                                    var p = localStorage.getItem("facultyapplied")
+                                    var r = JSON.parse(p)
+                                    r.push(facultyapplied)
+                                    try {
+                                        localStorage.setItem("facultyapplied", JSON.stringify(r))
+                                        alert("Successfully applied!")
+                                    }
+                                    catch (e) {
+                                        alert("Something went wrong, try again!")
+                                    }
+                                }
+                                else {
+                                    try {
+                                        status = localStorage.setItem("facultyapplied", JSON.stringify([facultyapplied]))
+                                        alert("Successfully applied!")
+                                    }
+                                    catch (e) {
+                                        alert("Something went wrong, try again!")
+                                    }
+
+                                }
+
+                            })
+                        )
+                    )
+                    $("#recmaindiv").append(row.append(col.append(x)))
+                }
+            }
+        }
+
+        function gotologin(logintype) {
+            var modalid = "#" + logintype + "lmodal"
+            $(modalid).modal("show")
+            $("#demomodal").modal("hide")
+        }
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

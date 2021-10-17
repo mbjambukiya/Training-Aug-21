@@ -1,0 +1,109 @@
+<form action="" id="addrecruitmentform">
+  <div class="container-fluid border bg-light">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="rccoursename" class="form-label">Course</label>
+        <input type="text" class="form-control" id="rccoursename" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="rccategory" class="form-label">Category</label>
+        <select name="category" id="rccategory" class="form-select">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="rcsyllabus" class="form-label">Syllabus</label>
+        <input type="file" accept=".pdf" class="form-control" id="rcsyllabus" required>
+        <span class="text-muted mx-2 my-1">upload pdf file only.</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="rcinterviewdate" class="form-label">Interview Date</label>
+        <input type="date" class="form-control" id="rcinterviewdate" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="rclastdatetoapply" class="form-label">Last Date to Apply</label>
+        <input type="date" class="form-control" id="rclastdatetoapply" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark" value="submit">Confirm</button>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+
+  $(function () {
+    var category = JSON.parse(localStorage.getItem("coursecategory"))
+    for (i of category) {
+      $("#rccategory").append($("<option></option>").text(i.category).val(i.category))
+    }
+  })
+
+  $("#addrecruitmentform").submit(function () {
+
+    if ($("#rcinterviewdate").val() > $("#rclastdatetoapply").val()) {
+
+      var recruitmentid = localStorage.getItem("recruitmentid")
+
+      if (recruitmentid) {
+        localStorage.setItem("recruitmentid", parseInt(recruitmentid) + 1)
+      }
+      else {
+        recruitmentid = 0;
+        localStorage.setItem("recruitmentid", parseInt(recruitmentid) + 1)
+      }
+
+      var recruitment = {
+        "id": parseInt(recruitmentid) + 1,
+        "course": $("#rccoursename").val(),
+        "category": $("#rccategory").val(),
+        "syllabus": $("#rcsyllabus").val(),
+        "interviewdate": $("#rcinterviewdate").val(),
+        "lastdatetoapply": $("#rclastdatetoapply").val()
+      }
+
+      if (localStorage.getItem("recruitment")) {
+        var x = JSON.parse(localStorage.getItem("recruitment"))
+        x.push(recruitment)
+        try {
+          localStorage.setItem("recruitment", JSON.stringify(x))
+          alert("Record updated successfully!!")
+          window.location.href = ""
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = ""
+        }
+      }
+      else {
+        try {
+          localStorage.setItem("recruitment", JSON.stringify([recruitment]))
+          alert("Record updated successfully!!")
+          window.location.href = ""
+        }
+        catch (e) {
+          alert("Something went wrong,please try again!!")
+          window.location.href = ""
+        }
+      }
+
+    }
+    else {
+      alert("Interviewdate can not be earlier than last date to apply!")
+      window.location.href = ""
+    }
+
+
+  })
+
+</script>

@@ -1,0 +1,70 @@
+<form action="" id="facultyloginform">
+  <div class="container-fluid border bg-light">
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="flname" class="form-label">Username(Email)</label>
+        <input type="text" class="form-control" id="flname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="flpassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="flpassword" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <button type="submit" class="btn btn-outline-dark">Login</button>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <a href="" data-bs-target="#forgotpasswordmodal" data-bs-toggle="modal"
+          onclick="$('#facultylmodal').modal('hide')">Forgot Password?</a>
+        <span>|</span>
+        <span>New User?</span>
+        <a href="" data-bs-target="#facultyrmodal" data-bs-toggle="modal"
+          onclick="$('#facultylmodal').modal('hide')">Register</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  $("#facultyloginform").submit(function () {
+
+    var username = $("#flname").val()
+    var password = $("#flpassword").val()
+
+    regfacdata = JSON.parse(localStorage.getItem("facultydata"))
+    var status
+    for (i of regfacdata) {
+      if (username == i.email && password == i.password) {
+        status = true;
+        break
+      }
+      else {
+        status = false
+      }
+    }
+    if (status) {
+      var faclogin = JSON.stringify({ "username": username, "password": password })
+      try {
+        sessionStorage.setItem("faclogin", faclogin)
+        alert("Logged in successfully!!!")
+        window.location.href = "recruitment.html"
+        return false;
+      }
+      catch (e) {
+        alert("Something went wrong,please try again!!")
+        window.location.href = "index.html"
+      }
+    }
+    else {
+      alert("Username or Password is wrong!!!")
+      window.location.href = "index.html"
+    }
+  })
+</script>
