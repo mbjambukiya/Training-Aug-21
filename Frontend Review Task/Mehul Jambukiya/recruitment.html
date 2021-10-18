@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 125px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
@@ -46,17 +46,16 @@
                     <li class="nav-item">
                         <a href="index.html#aboutus" class="nav-link">About/Contact Us</a>
                     </li>
-
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-bs-target="#demomodal"
-                            data-bs-toggle="modal">Login/Register</a>
-                    </li>
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-info" type="submit">Search</button>
                 </form>
+                <div class="d-flex justify-content-center m-1">
+                    <button class="btn btn-outline-info me-1 loginbtn" data-bs-target="#demomodal"
+                    data-bs-toggle="modal">Login/Register</button>
+                    <button class="btn btn-outline-info me-1 logoutbtn" onclick="logoutfun()">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -241,11 +240,6 @@
             }
         }
 
-        function gotologin(logintype) {
-            var modalid = "#" + logintype + "lmodal"
-            $(modalid).modal("show")
-            $("#demomodal").modal("hide")
-        }
     </script>
 
     <!-- Optional JavaScript; choose one of the two! -->

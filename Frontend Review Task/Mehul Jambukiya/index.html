@@ -52,16 +52,16 @@
                     <li class="nav-item">
                         <a href="#aboutus" class="nav-link">About/Contact Us</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-bs-target="#demomodal"
-                            data-bs-toggle="modal">Login/Register</a>
-                    </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" action="">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-info" type="submit">Search</button>
                 </form>
+                <div class="d-flex justify-content-center m-1">
+                    <button class="btn btn-outline-info me-1 loginbtn" data-bs-target="#demomodal"
+                    data-bs-toggle="modal">Login/Register</button>
+                    <button class="btn btn-outline-info me-1 logoutbtn" onclick="logoutfun()">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -302,7 +302,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-12 d-flex justify-content-center align-items-center">
                                 <div class="card-body">
                                     <h4 class="card-text">Mr. A. B. Xyz</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         Aliquam modi
                                         earum animi minima incidunt provident minus aperiam quas unde dolorum?
                                     </p>
@@ -322,7 +322,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-12 d-flex justify-content-center align-items-center">
                                 <div class="card-body">
                                     <h4 class="card-text">Mr. A. B. Xyz</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                         Aliquam modi
                                         earum animi minima incidunt provident minus aperiam quas unde dolorum?
                                     </p>
@@ -473,15 +473,6 @@
         </div>
     </div>
 
-    <script>
-
-        function gotologin(logintype) {
-            var modalid = "#" + logintype + "lmodal"
-            $(modalid).modal("show")
-            $("#demomodal").modal("hide")
-        }
-
-    </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

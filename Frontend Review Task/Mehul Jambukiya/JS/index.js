@@ -1,5 +1,13 @@
 
 $(function () {
+
+    if (sessionStorage.getItem("adminlogin") || sessionStorage.getItem("faclogin") || sessionStorage.getItem("stdlogin")) {
+        $(".loginbtn").hide()
+    }
+    else {
+        $(".logoutbtn").hide()
+    }
+
     var d = new Date()
 
     var hr = 23 - d.getHours();
@@ -94,4 +102,19 @@ $(function () {
         }
     }
 
+
 })
+
+function gotologin(logintype) {
+    var modalid = "#" + logintype + "lmodal"
+    $(modalid).modal("show")
+    $("#demomodal").modal("hide")
+}
+
+function logoutfun() {
+    sessionStorage.removeItem("adminlogin")
+    sessionStorage.removeItem("stdlogin")
+    sessionStorage.removeItem("faclogin")
+    $(".logoutbtn").hide()
+    $(".loginbtn").show()
+}

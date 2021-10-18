@@ -13,8 +13,6 @@
     <title>Admin-GetSkilled</title>
     <link rel="stylesheet" href="CSS/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="JS/admin.js"></script>
-
 </head>
 
 <body>
@@ -49,8 +47,13 @@
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-info" type="submit">Search</button>
                 </form>
+                <div class="d-flex justify-content-center m-1">
+                    <button class="btn btn-outline-info me-1" data-bs-target="#demomodal"
+                    data-bs-toggle="modal" id="aloginbtn">Login/Register</button>
+                    <button class="btn btn-outline-info me-1" onclick="alogoutfun()" id="alogoutbtn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -171,7 +174,7 @@
             <div class="col align-middle">
                 <h1 class="align-middle">Category List</h1>
                 <h4 id="totalcategories"></h4>
-                <a href="#" class="btn btn-outline-secondary btn-sm float-end" data-bs-target="#addcatmodal"
+                <a href="#" class="btn btn-outline-secondary btn-sm" data-bs-target="#addcatmodal"
                     data-bs-toggle="modal">Add More</a>
             </div>
         </div>
@@ -215,7 +218,7 @@
             <div class="col align-middle">
                 <h1 class="align-middle">Active Recruitment List</h1>
                 <h4 id="totalrecruitments"></h4>
-                <a href="#" class="btn btn-outline-secondary btn-sm float-end" data-bs-target="#addrecruitment"
+                <a href="#" class="btn btn-outline-secondary btn-sm" data-bs-target="#addrecruitment"
                     data-bs-toggle="modal">Add More</a>
             </div>
         </div>
@@ -263,7 +266,7 @@
             <div class="col align-middle">
                 <h1 class="align-middle">Courses</h1>
                 <h4 id="totalcourses"></h4>
-                <a href="#" class="btn btn-outline-secondary btn-sm float-end" data-bs-target="#addfinalcourse"
+                <a href="#" class="btn btn-outline-secondary btn-sm" data-bs-target="#addfinalcourse"
                     data-bs-toggle="modal">Add More</a>
             </div>
         </div>
@@ -325,13 +328,8 @@
         <span class="align-middle">@2021 Copyrights - GetSkilled</span>
     </footer>
 
-    <script>
-        function gotologin(logintype) {
-            var modalid = "#" + logintype + "lmodal"
-            $(modalid).modal("show")
-            $("#demomodal").modal("hide")
-        }
-    </script>
+    <script src="JS/admin.js"></script>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 

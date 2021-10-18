@@ -51,6 +51,7 @@
     }
     if (status) {
       var faclogin = JSON.stringify({ "username": username, "password": password })
+
       try {
         sessionStorage.setItem("faclogin", faclogin)
         alert("Logged in successfully!!!")

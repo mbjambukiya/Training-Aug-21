@@ -15,6 +15,10 @@
 #categoryul a:hover{
     background-color:lightblue;
 }
+
+#testimonial p{
+    text-align: justify;
+}
 #logintype option{
     max-width: 150px;
     background-color: lightblue;

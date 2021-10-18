@@ -1,9 +1,25 @@
 
-$("#addcatmodalbody").load("addcategory.html")
-$("#addrecruitmentmodalbody").load("addrecruitment.html")
-$("#addfinalcoursemodalbody").load("addcourse.html")
 
 $(function () {
+
+
+    $("#addcatmodalbody").load("addcategory.html")
+    $("#addrecruitmentmodalbody").load("addrecruitment.html")
+    $("#addfinalcoursemodalbody").load("addcourse.html")
+
+    $("#studentrmodal .modal-body").load("sregister.html")
+    $("#studentlmodal .modal-body").load("slogin.html")
+    $("#facultyrmodal .modal-body").load("fregister.html")
+    $("#facultylmodal .modal-body").load("flogin.html")
+    $("#adminlmodal .modal-body").load("adminlogin.html")
+    $("#forgotpasswordmodal .modal-body").load("forgotpassword.html")
+
+    if (sessionStorage.getItem("adminlogin") || sessionStorage.getItem("faclogin") || sessionStorage.getItem("stdlogin")) {
+        $("#aloginbtn").hide()
+    }
+    else {
+        $("#alogoutbtn").hide()
+    }
 
     var totalcategories = JSON.parse(localStorage.getItem("coursecategory"))
     $("#totalcategories").text(totalcategories.length)
@@ -80,6 +96,20 @@ $(function () {
     $("#registeredfaculties").text(registeredfaculties.length)
 
 })
+
+function gotologin(logintype) {
+    var modalid = "#" + logintype + "lmodal"
+    $(modalid).modal("show")
+    $("#demomodal").modal("hide")
+}
+
+function alogoutfun() {
+    sessionStorage.removeItem("adminlogin")
+    sessionStorage.removeItem("stdlogin")
+    sessionStorage.removeItem("faclogin")
+    $("#alogoutbtn").hide()
+    $("#aloginbtn").show()
+}
 
 var category = JSON.parse(localStorage.getItem("coursecategory"))
 function editcategoryfun(id) {
