@@ -1,0 +1,13 @@
+.indexul{
+    list-style: none;
+    font-size: large;
+}
+
+.indexul li a{
+    text-decoration: none;
+    color:lightgreen;
+}
+
+.indexul li a:hover{
+    text-decoration:underline;
+}

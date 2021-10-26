@@ -1,0 +1,1 @@
+alert("demo.js file is called")
