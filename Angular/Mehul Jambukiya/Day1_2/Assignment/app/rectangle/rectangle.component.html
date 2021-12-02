@@ -1,0 +1,11 @@
+<label for="length" class="form-label">Enter length of rectangle : </label>
+<input type="number" name="length" id="length" class="form-control" [(ngModel)]="length" required>
+
+<label for="width" class="form-label">Enter width of rectangle : </label>
+<input type="number" name="width" id="width" class="form-control" [(ngModel)]="width" required>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-outline-secondary btn-sm my-2" (click)="getArea()">Calculate Area</button>
+</div>
+
+<p *ngIf="length!==0&&width!==0">Area of rectangle is : {{area}}</p>

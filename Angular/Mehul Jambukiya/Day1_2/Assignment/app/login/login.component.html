@@ -1,0 +1,11 @@
+<label for="username" class="form-label">Username : </label>
+<input type="text" id="username" class="form-control" [(ngModel)]="inpUsername" required>
+
+<label for="password" class="form-label">Password : </label>
+<input type="password" id="password" class="form-control" [(ngModel)]="inpPassword" required>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-outline-secondary btn-sm my-2" (click)="login()">LogIn</button>
+</div>
+
+<p *ngIf="inpUsername!==''&&inpPassword!==''">{{loginStatus}}</p>

@@ -1,0 +1,8 @@
+<label for="radius" class="form-label">Enter radius of circle : </label>
+<input type="number" name="radius" id="radius" class="form-control" [(ngModel)]="radius" required>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-outline-secondary btn-sm my-2" (click)="getArea()">Calculate Area</button>
+</div>
+
+<p *ngIf="radius !== 0">Area of circle is : {{area}}</p>

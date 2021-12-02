@@ -1,0 +1,11 @@
+<div *ngFor="let ad of ads">
+    <!-- <p>{{ad.id}}, {{ad.company}}, {{ad.description}}</p> -->
+    <div class="card text-center m-3 p-2">
+        <div class="card-header">
+            {{ad.company}}
+        </div>
+        <div class="card-body">
+            {{ad.description}}
+        </div>
+    </div>
+</div>

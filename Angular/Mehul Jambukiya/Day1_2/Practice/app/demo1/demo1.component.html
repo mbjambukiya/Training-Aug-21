@@ -1,0 +1,13 @@
+<h5 class="text-success bg-light">Demo1 Component!!</h5>
+<button class="btn btn-sm btn-primary" [disabled]="!allowClick">Click me!</button>
+
+<br>
+<!-- <input type="text" (input)="updateServer($event)"> -->
+<label for="">Server name : </label>
+<input type="text" [(ngModel)]="serverName">
+<br>
+<button class="btn btn-sm btn-primary" (click)="addServer()">Add server</button>
+<p *ngIf="serverCreated ; else noServer" [ngStyle]="{backgroundColor:getColor()}">Server - {{serverName}} with Id {{serverId}} is {{getServerStatus()}}</p>
+<ng-template #noServer>
+    <p>No server!</p>
+</ng-template>

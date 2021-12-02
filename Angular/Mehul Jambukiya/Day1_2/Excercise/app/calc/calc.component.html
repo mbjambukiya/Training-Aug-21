@@ -1,0 +1,12 @@
+
+<label for="" class="form-label">Number 1 :</label>
+<input type="number" class="form-control" [(ngModel)]="num1">
+<label for="" class="form-label">Number 2 :</label>
+<input type="number" class="form-control" [(ngModel)]="num2">
+
+<p>Result : {{num1}} {{operation}} {{num2}} = {{result}}</p>
+
+<button class="btn btn-outline-secondary btn-sm me-1" (click)="Calculate(operations[0])">{{operations[0]}}</button>
+<button class="btn btn-outline-secondary btn-sm me-1" (click)="Calculate(operations[1])">{{operations[1]}}</button>
+<button class="btn btn-outline-secondary btn-sm me-1" (click)="Calculate(operations[2])">{{operations[2]}}</button>
+<button class="btn btn-outline-secondary btn-sm me-1" (click)="Calculate(operations[3])">{{operations[3]}}</button>

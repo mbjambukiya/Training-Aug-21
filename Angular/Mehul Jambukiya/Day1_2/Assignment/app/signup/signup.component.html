@@ -1,0 +1,16 @@
+<label for="name" class="form-label">Enter Name : </label>
+<input type="text" id="name" class="form-control" [(ngModel)]="name" required>
+
+<label for="address" class="form-label">Enter Address : </label>
+<input type="text" id="address" class="form-control" [(ngModel)]="address" required>
+
+<label for="panno" class="form-label">Enter Pan Number : </label>
+<input type="text" id="panno" class="form-control" [(ngModel)]="panNumber" required>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-outline-secondary btn-sm my-2" (click)="signUp()">Sign Up</button>
+</div>
+
+<p *ngIf="user.name!==''&&user.address!==''&&user.panNumber!==''">
+    Name : {{user.name}}, Address : {{user.address}}, Pan Number : {{user.panNumber}}
+</p>
