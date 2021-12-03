@@ -1,0 +1,23 @@
+<div [ngClass]="hasBackground? 'hasBg' : '' ">Demo div1</div>
+<div [ngStyle]="demoStyle">Demo div2</div>
+
+<label for="">Username</label>
+<input type="text" [(ngModel)]="userName">
+<p>username {{userName}} is available! </p>
+
+<h5 *ngIf="isActive">{{product}}</h5>
+
+<div *ngIf="!isActive; then show else hide"></div>
+<ng-template #show>{{product}}</ng-template>
+<ng-template #hide>No products available!</ng-template>
+
+<div *ngFor="let p of products; let i=index">
+    <li>{{i+1}} - {{p}}</li>
+</div>
+
+<div [ngSwitch]="choice">
+<p *ngSwitchCase=1>one</p>
+<p *ngSwitchCase=2>two</p>
+<p *ngSwitchCase=3>three</p>
+<p *ngSwitchDefault>default</p>
+</div>

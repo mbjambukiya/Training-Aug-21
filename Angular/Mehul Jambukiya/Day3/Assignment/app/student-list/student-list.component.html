@@ -1,0 +1,24 @@
+<table class="table table-bordered text-center bg-light">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Average</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students; let i = index" [ngSwitch]="students[i].grade">
+            <ng-container *ngSwitchCase="students[i].grade">
+                <ng-container *ngIf="students[i].active==true">
+                    <td [ngClass]="gradeWiseStyle[students[i].grade]">{{student.id}}</td>
+                    <td [ngClass]="gradeWiseStyle[students[i].grade]">{{student.name}}</td>
+                    <td [ngClass]="gradeWiseStyle[students[i].grade]">{{student.age}}</td>
+                    <td [ngClass]="gradeWiseStyle[students[i].grade]">{{student.average}}</td>
+                    <td [ngClass]="gradeWiseStyle[students[i].grade]">{{student.grade}}</td>
+                </ng-container>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>
