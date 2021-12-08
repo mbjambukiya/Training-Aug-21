@@ -72,7 +72,7 @@ export class AdmissionFormComponent implements OnInit {
       city: ['', [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       state: ['', [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       country: ['', [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
-      pin: ['', Validators.required]
+      pin: ['', [Validators.required,Validators.pattern('[0-9]{6,6}')]]
     }),
     father: this.createParentForm(),
     mother: this.createParentForm(),
@@ -87,7 +87,7 @@ export class AdmissionFormComponent implements OnInit {
       houseno: [''],
       addressline1: [''],
       addressline2: [''],
-      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+      phone: ['', [Validators.required,Validators.pattern('[1-9][0-9]{9,9}')]]
     })
   })
 
@@ -100,8 +100,18 @@ export class AdmissionFormComponent implements OnInit {
       educationQualification: ['', Validators.required],
       profession: ['', Validators.required],
       designation: [''],
-      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+      phone: ['', [Validators.required, Validators.pattern('[1-9][0-9]{9,9}')]]
     })
+  }
+
+  createEmergencyContactForm(): FormGroup {
+    return this.fb.group({
+      relation: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('[1-9][0-9]{9,9}')]]
+    })
+  }
+  get emergencyContacts() {
+    return this.applicationForm.get('emergencyContacts') as FormArray
   }
 
   get firstName() {
@@ -179,12 +189,7 @@ export class AdmissionFormComponent implements OnInit {
   get studentPhone() {
     return this.applicationForm.get('addressWithTel.phone')
   }
-  createEmergencyContactForm(): FormGroup {
-    return this.fb.group({
-      relation: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
-    })
-  }
+
 
   addEmergencyContact() {
     this.emergencyContacts.push(this.createEmergencyContactForm())
@@ -195,15 +200,6 @@ export class AdmissionFormComponent implements OnInit {
       this.emergencyContacts.removeAt(this.emergencyContacts.length - 1)
     }
   }
-
-  get emergencyContacts() {
-    return this.applicationForm.get('emergencyContacts') as FormArray
-  }
-
-  get emergencyContactsData() {
-    return this.applicationForm.get('emergencyContacts')
-  }
-
 
   addReferenceDetail() {
     this.referenceDetails.push(this.fb.control(''))
@@ -221,6 +217,6 @@ export class AdmissionFormComponent implements OnInit {
 
   onSubmit() {
     this.studentList.push(this.applicationForm.value)
-    console.log(this.applicationForm.value)
+    // console.log(this.applicationForm.value)
   }
 }

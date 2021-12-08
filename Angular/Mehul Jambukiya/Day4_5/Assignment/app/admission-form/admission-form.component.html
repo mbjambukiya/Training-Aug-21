@@ -3,7 +3,7 @@
         <h3 class="text-center">Admission Form</h3>
     </div>
     <hr>
-    <form [formGroup]="applicationForm">
+    <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <h5>Student Details:</h5>
         </div>
@@ -161,6 +161,9 @@
                             <div *ngIf="pin.errors?.['required']">
                                 Zip code is required.
                             </div>
+                            <div *ngIf="pin.errors?.['pattern']">
+                                Zip code is invalid.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -210,7 +213,7 @@
                 </div>
                 <div class="col-4">
                     <label for="flname" class="form-label">Lastname</label><span class="text-danger">*</span>
-                    <input type="text" name="" id="flname" class="form-control" formControlName="lastName" required> 
+                    <input type="text" name="" id="flname" class="form-control" formControlName="lastName" required>
                     <div *ngIf="fatherLastName!==null">
                         <div *ngIf="fatherLastName.invalid && (fatherLastName.dirty || fatherLastName.touched)"
                             class="text-danger m-0 p-0 ms-1 mt-1">
@@ -237,11 +240,8 @@
                             <div *ngIf="fatherPhone.errors?.['required']">
                                 Phone number is required.
                             </div>
-                            <div *ngIf="fatherPhone.errors?.['minlength']">
-                                Phonenumber must be of 10 digit.
-                            </div>
-                            <div *ngIf="fatherPhone.errors?.['maxlength']">
-                                Phonenumber must be of 10 digit.
+                            <div *ngIf="fatherPhone.errors?.['pattern']">
+                                Phonenumber is invalid.
                             </div>
                         </div>
                     </div>
@@ -266,7 +266,8 @@
                 <div class="col-4">
                     <label for="fequa" class="form-label">Education Qualification</label><span
                         class="text-danger">*</span>
-                    <input type="text" name="" id="fequa" class="form-control" formControlName="educationQualification" required>
+                    <input type="text" name="" id="fequa" class="form-control" formControlName="educationQualification"
+                        required>
                     <div *ngIf="fatherEduQua!==null">
                         <div *ngIf="fatherEduQua.invalid && (fatherEduQua.dirty || fatherEduQua.touched)"
                             class="text-danger m-0 p-0 ms-1 mt-1">
@@ -278,7 +279,8 @@
                 </div>
                 <div class="col-4">
                     <label for="fprofession" class="form-label">Profession</label><span class="text-danger">*</span>
-                    <input type="text" name="" id="fprofession" class="form-control" formControlName="profession" required>
+                    <input type="text" name="" id="fprofession" class="form-control" formControlName="profession"
+                        required>
                     <div *ngIf="fatherProfession!==null">
                         <div *ngIf="fatherProfession.invalid && (fatherProfession.dirty || fatherProfession.touched)"
                             class="text-danger m-0 p-0 ms-1 mt-1">
@@ -365,11 +367,8 @@
                             <div *ngIf="motherPhone.errors?.['required']">
                                 Phonenumber is required.
                             </div>
-                            <div *ngIf="motherPhone.errors?.['minlength']">
-                                Phonenumber must be of 10 digit.
-                            </div>
-                            <div *ngIf="motherPhone.errors?.['maxlength']">
-                                Phonenumber must be of 10 digit.
+                            <div *ngIf="motherPhone.errors?.['pattern']">
+                                Phonenumber is not valid.
                             </div>
                         </div>
                     </div>
@@ -394,7 +393,8 @@
                 <div class="col-4">
                     <label for="mequa" class="form-label">Education Qualification</label><span
                         class="text-danger">*</span>
-                    <input type="text" name="" id="mequa" class="form-control" formControlName="educationQualification" required>
+                    <input type="text" name="" id="mequa" class="form-control" formControlName="educationQualification"
+                        required>
                     <div *ngIf="motherEduQua!==null">
                         <div *ngIf="motherEduQua.invalid && (motherEduQua.dirty || motherEduQua.touched)"
                             class="text-danger m-0 p-0 ms-1 mt-1">
@@ -406,7 +406,8 @@
                 </div>
                 <div class="col-4">
                     <label for="mprofession" class="form-label">Profession</label><span class="text-danger">*</span>
-                    <input type="text" name="" id="mprofession" class="form-control" formControlName="profession" required>
+                    <input type="text" name="" id="mprofession" class="form-control" formControlName="profession"
+                        required>
                     <div *ngIf="motherProfession!==null">
                         <div *ngIf="motherProfession.invalid && (motherProfession.dirty || motherProfession.touched)"
                             class="text-danger m-0 p-0 ms-1 mt-1">
@@ -425,9 +426,9 @@
         <hr>
         <div class="d-flex flex-row align-items-center mb-1">
             <h5>Emergency Contacts :</h5>
-            <button class="btn btn-outline-secondary btn-sm float-start ms-2" (click)="addEmergencyContact()">+</button>
+            <button class="btn btn-outline-secondary btn-sm float-start ms-2" (click)="addEmergencyContact()" type="button">+</button>
             <button class="btn btn-outline-secondary btn-sm float-start ms-2"
-                (click)="removeEmergencyContact()">-</button>
+                (click)="removeEmergencyContact()" type="button">-</button>
         </div>
 
         <div formArrayName="emergencyContacts" *ngFor="let contact of emergencyContacts.controls;let i= index">
@@ -436,19 +437,38 @@
                 <div class="col-6">
                     <label for="ecrelation" class="form-label">Relation</label><span class="text-danger">*</span>
                     <input type="text" name="" id="ecrelation" class="form-control" formControlName="relation" required>
+                    <div *ngIf="contact.get('relation')!==null">
+                        <div *ngIf="contact.get('relation')!.invalid && (contact.get('relation')!.dirty || contact.get('relation')!.touched)"
+                            class="text-danger m-0 p-0 ms-1 mt-1">
+                            <div *ngIf="contact.get('relation')!.errors?.['required']">
+                                Relation is required.
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6">
                     <label for="ecphone" class="form-label">Phone</label><span class="text-danger">*</span>
                     <input type="number" name="" id="ecphone" class="form-control" formControlName="phone" required>
+                    <div *ngIf="contact.get('phone')!==null">
+                        <div *ngIf="contact.get('phone')!.invalid && (contact.get('phone')!.dirty || contact.get('phone')!.touched)"
+                            class="text-danger m-0 p-0 ms-1 mt-1">
+                            <div *ngIf="contact.get('phone')!.errors?.['required']">
+                                Phonenumber is required.
+                            </div>
+                            <div *ngIf="contact.get('phone')!.errors?.['pattern']">
+                                Phonenumber is invalid.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <hr>
         <div class="d-flex flex-row align-items-center">
             <h5>Reference:</h5>
-            <button class="btn btn-outline-secondary btn-sm float-start ms-2" (click)="addReferenceDetail()">+</button>
+            <button class="btn btn-outline-secondary btn-sm float-start ms-2" (click)="addReferenceDetail()" type="button">+</button>
             <button class="btn btn-outline-secondary btn-sm float-start ms-2"
-                (click)="removereferenceDetail()">-</button>
+                (click)="removereferenceDetail()" type="button">-</button>
         </div>
 
         <div class="row g-3 mb-3">
@@ -457,7 +477,7 @@
                     <label for="refdetail" class="form-label">Reference Details {{i+1}}</label>
                     <input type="text" name="" id="refdetail" class="form-control" [formControlName]="i">
                 </div>
-                
+
             </div>
             <div class="col">
                 <label for="refthrough" class="form-label">Reference Through</label>
@@ -480,11 +500,8 @@
                             <div *ngIf="studentPhone.errors?.['required']">
                                 Phonenumber is required.
                             </div>
-                            <div *ngIf="studentPhone.errors?.['minlength']">
-                                Phonenumber must be of 10 digit.
-                            </div>
-                            <div *ngIf="studentPhone.errors?.['maxlength']">
-                                Phonenumber must be of 10 digit.
+                            <div *ngIf="studentPhone.errors?.['pattern']">
+                                Phonenumber is not valid.
                             </div>
                         </div>
                     </div>
@@ -504,8 +521,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary" (click)="onSubmit()"
-                [disabled]="applicationForm.invalid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="applicationForm.invalid">Submit</button>
         </div>
     </form>
 </div>
