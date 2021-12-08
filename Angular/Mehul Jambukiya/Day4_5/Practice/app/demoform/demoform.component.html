@@ -1,0 +1,79 @@
+<!-- <label for="fname">Name</label>
+<input type="text" name="" id="fname" [formControl]="firstName">
+<br>
+<button (click)="updateName()">Update to Default</button>
+<p>Value : {{firstName.value}}</p> -->
+
+
+<form [formGroup]="myProfile" (ngSubmit)="onSubmit()">
+
+    <label for="fname">First Name: </label>
+    <input id="fname" type="text" formControlName="firstName" required>
+
+    <div *ngIf="firstName!==null">
+
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+            <div *ngIf="firstName.errors?.['required']">
+                Name is required.
+            </div>
+            <div *ngIf="firstName.errors?.['minlength']">
+                Name must be at least 4 characters long.
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <label for="lname">Last Name: </label>
+    <input id="lname" type="text" formControlName="lastName">
+
+    <div formGroupName="address">
+
+        <label for="">Address</label>
+        <br>
+        <label for="city">City: </label>
+        
+        <input id="city" type="text" formControlName="city">
+        <br>
+        <label for="state">State: </label>
+        <input id="state" type="text" formControlName="state">
+
+    </div>
+
+    <div formArrayName="skills">
+        <label for="">Skills</label>
+        <br>
+        <div *ngFor="let skill of skills.controls; let i=index">
+            <label for="">Skill {{i+1}}</label>
+            <input type="text" name="" id="" [formControlName]="i">
+        </div>
+        <button (click)="addSkill()" type="button">Add Skill</button>
+    </div>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<form [formGroup]="stuForm" (ngSubmit)="onSubmit()">
+    <label for="stuid">Id: </label>
+    <input id="stuid" type="number" formControlName="id">
+    <label for="stuname">name: </label>
+    <input id="stuname" type="text" formControlName="name">
+    <label for="stumarks">marks: </label>
+    <input id="stumarks" type="number" formControlName="marks">
+
+    <div formGroupName="subject">
+
+        <label for="">Subject</label>
+        <br>
+        <label for="subId">subId: </label>
+        
+        <input id="subId" type="number" formControlName="subId">
+        <br>
+        <label for="subName">subName: </label>
+        <input id="subName" type="text" formControlName="subName">
+
+    </div>
+    <button type="submit">Submit</button>
+</form>
