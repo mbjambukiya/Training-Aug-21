@@ -1,0 +1,7 @@
+<div class="container w-25">
+<label for="name" class="form-label">Name : </label>
+<input type="text" name="" id="name" [(ngModel)]="name" class="form-control">
+<h3>Greeting message : {{msg}}</h3>
+<hr>
+<app-greetings [Name]="name" (msgnotify)="getMsg($event)"></app-greetings>
+</div>
