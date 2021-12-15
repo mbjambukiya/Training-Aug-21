@@ -1,0 +1,162 @@
+<h3 class="text-center mt-2">Exam</h3>
+
+<div class="container w-25">
+
+    <div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary btn-sm my-2"
+                onclick="startexam(startexambtn,finishexambtn,myForm,timer)" id="startexambtn">Start
+                Exam</button>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <span id="timer"></span>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <form action="" id="myForm" style="display: none">
+                <label for="" class="form-label">Question 1</label>
+                <div class="form-check">
+                    <input type="radio" name="q1" id="q1a" value="1" class="form-check-input">
+                    <label for="q1a" class="form-check-label">AnswerA</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q1" id="q1b" value="2" class="form-check-input">
+                    <label for="q1b" class="form-check-label">AnswerB</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q1" id="q1c" value="3" class="form-check-input">
+                    <label for="q1c" class="form-check-label">AnswerC</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q1" id="q1d" value="4" class="form-check-input">
+                    <label for="q1d" class="form-check-label">AnswerD</label>
+                </div>
+
+                <label for="" class="form-label">Question 2</label>
+                <div class="form-check">
+                    <input type="radio" name="q2" id="q2a" value="1" class="form-check-input">
+                    <label for="q2a" class="form-check-label">AnswerA</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q2" id="q2b" value="2" class="form-check-input">
+                    <label for="q2b" class="form-check-label">AnswerB</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q2" id="q2c" value="3" class="form-check-input">
+                    <label for="q2c" class="form-check-label">AnswerC</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q2" id="q2d" value="4" class="form-check-input">
+                    <label for="q2d" class="form-check-label">AnswerD</label>
+                </div>
+
+                <label for="" class="form-label">Question 3</label>
+                <div class="form-check">
+                    <input type="radio" name="q3" id="q3a" value="1" class="form-check-input">
+                    <label for="q3a" class="form-check-label">AnswerA</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q3" id="q3b" value="2" class="form-check-input">
+                    <label for="q3b" class="form-check-label">AnswerB</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q3" id="q3c" value="3" class="form-check-input">
+                    <label for="q3c" class="form-check-label">AnswerC</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="q3" id="q3d" value="4" class="form-check-input">
+                    <label for="q3d" class="form-check-label">AnswerD</label>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary btn-sm my-2" onclick="endexam()" id="finishexambtn"
+                style="display: none">Finish
+                Exam</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    var x;
+
+    function startexam(start, end, examform, timer) {
+        name = prompt("Enter your name!")
+        if (name == "") {
+            alert("Please enter your name!")
+            name = prompt("Enter your name!")
+        }
+        else {
+            start.style.display = "none";
+            examform.style.display = "block";
+            end.style.display = "block";
+
+            var hr = 2;
+            var minute = 59;
+            var seconds = 60;
+
+            timerinterval = setInterval(() => {
+                if (hr >= 0) {
+
+                    seconds -= 1;
+                    if (seconds == 0) {
+                        seconds = 60;
+                        minute -= 1;
+                    }
+                    if (minute == 0) {
+                        minute = 59;
+                        hr -= 1;
+                    }
+                    timer.innerHTML = "Remaining time : " + hr + ":" + minute + ":" + seconds;
+                }
+                else {
+                    clearInterval(timerinterval);
+                }
+
+            }, 1000);
+            x = setTimeout(submitexam, 10800000, 1);
+        }
+    }
+
+    function endexam() {
+        var res = confirm("Sure?")
+        if (res) {
+            clearTimeout(x);
+            submitexam(1);
+        }
+    }
+
+    function submitexam(flagvar) {
+        confirmsubmit(flagvar).then(
+            (success) => {
+                alert(success);
+                window.location.href = ""
+            },
+            (error) => {
+                alert(error);
+            }
+        )
+    }
+
+    function confirmsubmit(flagvar) {
+        let p = new Promise((resolve, reject) => {
+            let resolveMessage = "Exam submitted successfully!";
+            let rejectMessage = "Something went wrong!";
+            if (parseInt(flagvar) == 1) {
+                resolve(resolveMessage);
+            }
+            else {
+                reject(rejectMessage);
+            }
+        })
+        return p;
+    }
+
+
+</script>

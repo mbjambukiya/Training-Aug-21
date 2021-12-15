@@ -1,0 +1,140 @@
+<div class="container w-50 p-3  border border-dark shadow text-light my-3" id="maindiv">
+
+    <h4 class="text-center mt-2">Employee Registration</h4>
+
+    <hr>
+
+    <form class="row g-3" id="myForm">
+
+        <div>
+            <label for="employeeId" class="form-label">EmployeeId</label>
+            <input type="text" class="form-control" pattern="[A-z0-9]{5,}" value="123456" id="empid" required>
+        </div>
+
+        <div>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="empname" value="john" required>
+        </div>
+
+        <div>
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="empage" min="18" max="60" value="25" required>
+        </div>
+
+        <div>
+            <label for="gender" class="form-label">Gender : </label>
+            <input type="radio" name="gender" id="male" value="male" checked>
+            <label for="male" class="form-label">Male</label>
+
+            <input type="radio" name="gender" id="female" value="female">
+            <label for="female" class="form-label">Female</label>
+        </div>
+
+        <div>
+            <label for="designation" class="form-label">Designation</label>
+            <input type="text" class="form-control" id="designation" value="developer" required>
+        </div>
+
+        <div>
+            <label for="salary" class="form-label">Salary</label>
+            <input type="text" class="form-control" id="salary" min="15000" max="275000" value="50000" required>
+        </div>
+
+        <div>
+            <label for="location" class="form-label">Location</label>
+            <select name="location" id="location" class="form-select">
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Surat">Surat</option>
+                <option value="Baroda">Baroda</option>
+                <option value="Rajkot">Rajkot</option>
+
+            </select>
+        </div>
+
+        <div>
+            <label for="email" class="form-label">EmailId</label>
+            <input type="email" class="form-control" id="email" value="xyz@gmail.com" required>
+        </div>
+
+        <div>
+            <label for="joindate" class="form-label">Joining Date</label>
+            <input type="date" class="form-control" id="joindate" value="2018-05-05" required>
+        </div>
+
+        <div>
+            <label for="contactno" class="form-label">Contact No</label>
+            <input type="number" class="form-control" id="contactno" min="6300000000" max="9999999999"
+                value="7777777777" required>
+        </div>
+
+        <div class="my-2 d-flex justify-content-center">
+            <button type="submit" class="btn btn-outline-light btn-sm" id="sub">Submit</button>
+        </div>
+    </form>
+
+
+</div>
+
+
+<script>
+
+    document.getElementById("sub").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        var gen = document.getElementsByName("gender");
+        var gender;
+
+        for (var i of gen) {
+            if (i.checked) {
+                gender = i.value;
+            }
+        }
+
+        var id = document.getElementById("empid").value;
+        var name = document.getElementById("empname").value;
+        var age = parseInt(document.getElementById("empage").value);
+        var designation = document.getElementById("designation").value;
+        var salary = document.getElementById("salary").value;
+        var location = document.getElementById("location").value;
+        var email = document.getElementById("email").value;
+        var joindate = document.getElementById("joindate").value;
+        var contact = document.getElementById("contactno").value;
+
+        var myform = document.getElementById("myForm");
+
+        var idpattern = /[A-z0-9]{5,}/gi;
+        var emailpattern = /[A-z0-9]{1,}[@][A-z]{1,}[.][A-z]{1,}/gi;
+
+        if (id == "" || name == "" || age == "" || designation == "" || salary == "" || location == "" || email == "" || joindate == "" || contact == "" || gender == undefined) {
+            alert("Please fill all the fields...");
+        }
+        else if (!id.match(idpattern)) {
+            alert("Length of EmployeeId should be greater than 5...");
+        }
+        else if (age < 18 || age > 60) {
+            alert("Age should between 18 and 60...");
+        }
+        else if (email.match(emailpattern) != 1) {
+            alert("Email should be in proper format...");
+        }
+        else {
+            myform.submit();
+            var newwin = window.open();
+            newwin.document.write(
+                "<h3>Your data submitted successfully...</h3>"
+                + "<br><label>Id:</label>" + id
+                + "<br><label>Name:</label>" + name
+                + "<br><label>Age:</label>" + age
+                + "<br><label>Gender:</label>" + gender
+                + "<br><label>Designation:</label>" + designation
+                + "<br><label>Salary:</label>" + salary
+                + "<br><label>Location:</label>" + location
+                + "<br><label>EmailId:</label>" + email
+                + "<br><label>Joining Date:</label>" + joindate
+                + "<br><label>ContactNo:</label>" + contact
+            )
+        }
+    });
+
+
+</script>

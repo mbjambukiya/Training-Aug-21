@@ -1,0 +1,102 @@
+nav {
+    background-color: lightskyblue;
+    grid-area: navbar;
+    padding: 10px;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.listitem {
+    display: inline;
+}
+
+main {
+    background-color: lightgreen;
+    grid-area: main;
+}
+
+#sidebar {
+    background-color: lightpink;
+    grid-area: sidebar;
+}
+
+#content1 {
+    background-color: lightgreen;
+    grid-area: content1;
+}
+
+#content2 {
+    background-color: lightgreen;
+    grid-area: content2;
+}
+
+#content3 {
+    background-color: lightgreen;
+    grid-area: content3;
+}
+
+footer {
+    background-color: lightskyblue;
+    grid-area: footer;
+}
+
+
+@media only screen and (max-width:600px) {
+
+    .container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1.5fr 1.5fr 1.2fr 1.2fr 1.2fr 0.8fr;
+        grid-gap: 2px;
+        grid-template-areas: "navbar""sidebar""main""content1""content2""content3""footer";
+    }
+
+    .listitem {
+        display: block;
+    }
+
+}
+
+
+@media only screen and (min-width:600px) {
+
+    .container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1.5fr 1.5fr 1.2fr 1.2fr 0.8fr;
+        grid-gap: 2px;
+        grid-template-areas: "navbar navbar""sidebar sidebar""main main""content1 content2""content3 .""footer footer";
+    }
+
+}
+
+
+@media only screen and (min-width:768px) {
+
+    .container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1.5fr 1.5fr 1.2fr 1.2fr 0.8fr;
+        grid-gap: 2px;
+        grid-template-areas: "navbar navbar navbar""sidebar main main""sidebar content1 content2""sidebar content3 .""sidebar footer footer";
+    }
+
+}
+
+@media only screen and (min-width:992px) {
+    .container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.2fr 1.5fr 1.2fr 0.8fr;
+        grid-gap: 2px;
+        grid-template-areas: "navbar navbar navbar navbar""sidebar main main main"
+            "sidebar content1 content2 content3""sidebar footer footer footer";
+
+    }
+}

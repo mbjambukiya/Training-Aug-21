@@ -1,0 +1,78 @@
+body {
+    background: rgba(245, 255, 250, 0.3);
+}
+
+#articlediv {
+    border: 1px solid black;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px 25px 25px 25px;
+    overflow: auto;
+    background-color: white;
+}
+
+header,
+section {
+    margin-left: 10px;
+    overflow: auto;
+}
+
+footer {
+    float: right;
+    font-size: small;
+    font-style: italic;
+    overflow: auto;
+    margin-right: 10px;
+}
+
+h1,
+h4 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#profilephoto {
+    float: right;
+    margin-right: 10px;
+    width: 105px;
+    height: 115px;
+    border: 0.2px solid black;
+    opacity: 98%;
+}
+
+th,
+td {
+    border: 0.5px solid black;
+    text-align: center;
+    vertical-align: center;
+    word-wrap: break-word;
+}
+
+table {
+    margin-left: 15px;
+    border-collapse: collapse;
+}
+
+#edudtl {
+    width: 75%;
+}
+
+#techskill {
+    width: 60%;
+}
+
+#perdtl {
+    width: 50%;
+}
+
+#vdo {
+    width: 75%;
+    height: 35%;
+    margin-left: 60px;
+    border: 0.2px solid black;
+}
+
+* {
+    box-sizing: border-box;
+}
