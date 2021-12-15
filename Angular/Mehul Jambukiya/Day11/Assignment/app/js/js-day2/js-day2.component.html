@@ -1,0 +1,76 @@
+<h3 class="text-center mt-2">Assignment</h3>
+
+<div class="container w-25">
+
+    <label class="form-label">Enter Date(MM-DD-YYYY):</label>
+    <input type="text" name="char" id="inpdt" class="form-control my-3">
+    <button class="btn btn-outline-secondary btn-sm mb-3" onclick="validate(inpdt.value)">Validate</button>
+
+</div>
+
+
+<script>
+
+    function validate(dt) {
+        var arr = dt.split('-');
+        var day = parseInt(arr[1]);
+        var month = parseInt(arr[0]);
+        var year = parseInt(arr[2]);
+        var month31 = new Array(1, 3, 5, 7, 8, 10, 12)
+        var month30 = new Array(4, 6, 9, 11)
+
+        if (month == 2) {
+            if (year % 4 == 0) {
+                if (year % 100 == 0) {
+                    if (year % 400 == 0) {
+                        if (day > 00 && day < 30) {
+                            alert("valid date...")
+                        }
+                        else {
+                            alert("Invalid date...")
+                        }
+                    }
+                    else if (day > 00 && day < 29) {
+                        alert("valid date")
+                    }
+                    else {
+                        alert("Invalid date...")
+                    }
+                }
+                else if (day > 00 && day < 30) {
+                    alert("valid date...")
+                }
+                else {
+                    alert("Invalid date...")
+                }
+            }
+            else if (day > 00 && day < 29) {
+                alert("valid date...")
+            }
+            else {
+                alert("Invalid date...")
+            }
+        }
+        else if (month31.includes(month)) {
+            if (day > 00 && day < 32) {
+                alert("valid date...")
+            }
+            else {
+                alert("Invalid date...")
+            }
+        }
+        else if (month30.includes(month)) {
+            if (day > 00 && day < 31) {
+                alert("valid date...")
+            }
+            else {
+                alert("Invalid date...")
+            }
+        }
+        else {
+            alert("Invalid date...")
+        }
+    }
+
+</script>
+

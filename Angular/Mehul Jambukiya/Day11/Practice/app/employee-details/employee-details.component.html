@@ -1,0 +1,19 @@
+<h3>Employee Details</h3>
+empId : {{employee.id}}
+empName : {{ employee.name}}
+
+ratings : <a [routerLink]="['ratings',employee.id]">Check</a>
+<br>
+<a routerLink="/employees">Go Back</a>
+<br>
+<a routerLink="../../">Go Back(relative)</a>
+
+<router-outlet></router-outlet>
+
+<!-- <button onclick="checkJs()">Check js</button>
+
+<script>
+    function checkJs(){
+        alert("working!");
+    }
+</script> -->

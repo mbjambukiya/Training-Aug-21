@@ -1,0 +1,3 @@
+function checkJs(){
+    alert("working!");
+}
