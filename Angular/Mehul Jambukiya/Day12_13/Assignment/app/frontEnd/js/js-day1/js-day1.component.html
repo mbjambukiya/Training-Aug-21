@@ -1,0 +1,99 @@
+<h3 class="text-center mt-2">Arithmatics</h3>
+
+<hr>
+
+<div class="container w-25">
+
+    <div class="mb-2">
+        <label class="form-label">Please enter first number:</label>
+        <input type="number" class="form-control" id="num1">
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Please enter second number:</label>
+        <input type="number" class="form-control" id="num2">
+    </div>
+
+    <label class="form-label mb-3">Please select an operation:</label>
+    <br>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="operation" value="addition" id="addition">
+        <label for="addition" class="form-check-label">Addition</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="operation" value="subtraction" id="subtraction">
+        <label for="subtraction" class="form-check-label">Subtraction</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="operation" value="multiplication" id="multiplication">
+        <label for="multiplication" class="form-check-label">Multiplication</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="operation" value="division" id="division">
+        <label for="division" class="form-check-label">Division</label>
+    </div>
+
+    <div class="d-grid gap-2">
+        <button class="btn btn-outline-secondary btn-sm"
+            onclick="calculate(num1.value,num2.value,result)">Calculate</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="reset()">Reset</button>
+    </div>
+
+    <div class="mb-2">
+        <label for="result">
+            Result is:
+            <span id="result" class="fw-bold"></span>
+        </label>
+    </div>
+</div>
+
+
+<script>
+
+    function calculate(num1, num2, result) {
+        var op = document.getElementsByName("operation");
+        var operation;
+        for (var i = 0; i < op.length; i++) {
+            if (op[i].checked) {
+                operation = op[i].value;
+            }
+        }
+
+        if (isNaN(num1) != 1 && isNaN(num2) != 1) {
+
+            var number1 = parseInt(num1);
+            var number2 = parseInt(num2);
+
+            switch (operation) {
+                case "addition":
+                    result.innerHTML = number1 + number2;
+                    break;
+                case "subtraction":
+                    result.innerHTML = number1 - number2;
+                    break;
+                case "multiplication":
+                    result.innerHTML = number1 * number2;
+                    break;
+                case "division":
+                    result.innerHTML = number1 / number2;
+                    break;
+                default:
+                    result.innerHTML = "Something went wrong...";
+                    break;
+            }
+
+        }
+
+    }
+
+    function reset() {
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("result").innerHTML = "";
+        var op = document.getElementsByName("operation");
+        for (var i = 0; i < op.length; i++) {
+            op[i].checked = false;
+        }
+    }
+
+</script>

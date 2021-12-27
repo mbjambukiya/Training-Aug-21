@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+}
+
+.list {
+    flex: 100%;
+    max-width: 100%;
+}
+
+.list ul {
+    font-size: medium;
+}
+
+.list ul li {
+    margin: 4px;
+    color: greenyellow;
+}
+
+@media(min-width:480px) {
+    .list {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+
+@media(min-width:720px) {
+    .list {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+
+@media(min-width:1000px) {
+    .list {
+        flex: 25%;
+        max-width: 25%;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}

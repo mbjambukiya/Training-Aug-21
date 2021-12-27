@@ -1,0 +1,10 @@
+<h2>Heroes</h2>
+<div *ngIf="hero$ | async as hero">
+  <h3>{{ hero.name }}</h3>
+  <p>Id: {{ hero.id }}</p>
+  <label for="hero-name" class="form-label">Hero name: </label>
+  <input type="text" id="hero-name" [(ngModel)]="hero.name" placeholder="name" class="form-control"/>
+  <div class="d-flex justify-content-center">
+  <button class="btn btn-primary my-3" (click)="gotoHeroes(hero)">Back</button>
+</div>
+</div>

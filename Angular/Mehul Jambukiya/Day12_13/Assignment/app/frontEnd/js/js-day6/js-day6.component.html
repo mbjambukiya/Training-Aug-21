@@ -1,0 +1,132 @@
+<body onload="getdata()">
+
+    <div class="container w-75 mt-3 border text-light" id="maindiv">
+        <h3 class="text-center mt-2">TMart</h3>
+
+        <div id="datadiv" class="border">
+
+            <div class="row m-2">
+                <div class="col border text-center">ProductID</div>
+                <div class="col border text-center">ProductName</div>
+                <div class="col border text-center">Price</div>
+                <div class="col border text-center">Quantity</div>
+                <div class="col border text-center">Action</div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center">
+
+            <button type="submit" class="btn btn-info btn-sm m-2" onclick="cartsummary()">Cart
+                Summary</button>
+
+        </div>
+    </div>
+
+
+    <script>
+
+        function getdata(getbtn) {
+            fetch("./data.json").then(
+                (success) => {
+                    return success.json();
+                }
+            ).then(
+                (p) => {
+                    var jsondata = JSON.stringify(p.Products)
+                    localStorage.setItem("MyProducts", jsondata);
+                }
+            )
+
+            localStorage.setItem("cart", "")
+
+            var div = document.getElementById("datadiv")
+
+            var products = JSON.parse(localStorage.getItem("MyProducts"))
+
+            for (var i in products) {
+
+                var id = document.createTextNode(products[i].ProductID)
+                var name = document.createTextNode(products[i].ProductName)
+                var price = document.createTextNode(products[i].Price)
+                var quantity = document.createTextNode(products[i].Quantity)
+                var action = document.createTextNode("Add to Cart")
+
+                var btn = document.createElement("button")
+                btn.style.margin = "3px"
+                btn.setAttribute("id", "btn" + i)
+                btn.setAttribute("class", "btn btn-outline-info btn-sm")
+                var btnid = "addtocart(" + (parseInt(i) + 1) + ")"
+                btn.setAttribute("onclick", btnid)
+                btn.appendChild(action)
+
+                var row = document.createElement("div")
+                row.setAttribute("class", "row m-2")
+
+                var col1 = document.createElement("div")
+                col1.setAttribute("class", "col border text-center")
+
+                var col2 = document.createElement("div")
+                col2.setAttribute("class", "col border text-center")
+
+                var col3 = document.createElement("div")
+                col3.setAttribute("class", "col border text-center")
+
+                var col4 = document.createElement("div")
+                col4.setAttribute("class", "col border text-center")
+
+                var col5 = document.createElement("div")
+                col5.setAttribute("class", "col border text-center")
+
+                col1.appendChild(id)
+                col2.appendChild(name)
+                col3.appendChild(price)
+                col4.appendChild(quantity)
+                col5.appendChild(btn)
+
+                row.appendChild(col1)
+                row.appendChild(col2)
+                row.appendChild(col3)
+                row.appendChild(col4)
+                row.appendChild(col5)
+
+                div.appendChild(row)
+            }
+        }
+
+
+
+        function addtocart(id) {
+            var products = JSON.parse(localStorage.getItem("MyProducts"))
+            var cartinsert = localStorage.getItem("cart")
+            for (i in products) {
+                if (products[i].ProductID == parseInt(id)) {
+                    localStorage.setItem("cart", cartinsert + products[i].ProductID + ",")
+                }
+            }
+        }
+
+        function cartsummary() {
+
+            var products = JSON.parse(localStorage.getItem("MyProducts"))
+            var totalAmount = 0;
+            var cartdata = localStorage.getItem("cart")
+            var cartdataarray = cartdata.split(",")
+
+            for (i in products) {
+                if (cartdataarray.includes(products[i].ProductID.toString())) {
+                    var totalPrice = products[i].Price * products[i].Quantity;
+                    console.log("ProductId : " + products[i].ProductID +
+                        ", ProductName : " + products[i].ProductName +
+                        ", Price : " + products[i].Price +
+                        ", Quantity : " + products[i].Quantity +
+                        ", Total Price : " + totalPrice
+                    )
+                    totalAmount += totalPrice
+                }
+
+            }
+            console.log("Total amount to pay : " + totalAmount)
+
+        }
+    </script>
